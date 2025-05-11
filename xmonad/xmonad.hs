@@ -198,7 +198,7 @@ vachiConfig =
 main :: IO ()
 main = do
     -- Create a pipe for xmobar
-    xmproc <- spawnPipe "/xmobar"
+    xmproc <- spawnPipe "xmobar"
     
     -- Define the final configuration, combining base config, hooks, and keybindings
     let config = vachiConfig 
