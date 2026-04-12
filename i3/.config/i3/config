@@ -1,0 +1,74 @@
+set $mod Mod4
+
+font pango:monospace 10
+
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+exec --no-startup-id firefox
+exec --no-startup-id ghostty
+exec --no-startup-id steam
+exec --no-startup-id discord
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id xsetroot -cursor_name left_ptr
+
+exec --no-startup-id picom --backend glx --vsync --shadow
+
+bindsym $mod+Shift+z exec i3lock-color -l dim
+bindsym $mod+p exec rofi -show drun
+bindsym $mod+Return exec ghostty
+bindsym $mod+Shift+Return exec ghostty --class=scratchpad
+bindsym $mod+b exec --no-startup-id xsetroot -cursor_name left_ptr
+
+for_window [class="scratchpad"] floating enable, resize set 80 ppt 80 ppt, move position center
+
+bindsym $mod+Shift+n exit
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+
+assign [class="Firefox"] workspace number 1
+assign [class="firefox"] workspace number 1
+assign [class="Antigravity"] workspace number 1
+assign [class="com.mitchellh.ghostty"] workspace number 1
+assign [class="Steam"] workspace number 3
+assign [class="discord"] workspace number 2
+assign [class="Discord"] workspace number 2
+assign [class="Cider"] workspace number 5
+assign [class="cider"] workspace number 5
+
+for_window [class="gamescope"] floating enable, fullscreen enable
+for_window [class="snapmaker-orca"] move container to workspace number 6
+
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute
+
+gaps inner 10
+gaps outer 10
+
+default_border pixel 2
+default_floating_border pixel 2
+
+hide_edge_borders both
+
+client.focused #7aa2f7 #1a1b26
+client.focused_inactive #7aa2f7 #1a1b26
+client.unfocused #a9b1d6 #1a1b26
+client.urgent #f7768e #1a1b26
+
+workspace 1 output HDMI-A-0
+workspace 2 output HDMI-A-0
+workspace 3 output HDMI-A-0
+workspace 4 output HDMI-A-0
+workspace 5 output HDMI-A-0
+workspace 6 output HDMI-A-0
