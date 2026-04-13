@@ -49,7 +49,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec ghostty
+bindsym $mod+Return exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -82,28 +82,22 @@ bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 # Switch to workspace.
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace web
+bindsym $mod+2 workspace code
+bindsym $mod+3 workspace chat
+bindsym $mod+4 workspace steam
+bindsym $mod+5 workspace games
+bindsym $mod+6 workspace diy
+bindsym $mod+7 workspace music
 
 # Move focused container to workspace.
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace web
+bindsym $mod+Shift+2 move container to workspace code
+bindsym $mod+Shift+3 move container to workspace chat
+bindsym $mod+Shift+4 move container to workspace steam
+bindsym $mod+Shift+5 move container to workspace games
+bindsym $mod+Shift+6 move container to workspace diy
+bindsym $mod+Shift+7 move container to workspace music
 
 # This only works for i3-gaps.
 gaps inner 5
@@ -126,8 +120,13 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
+for_window [class="firefox"] move to workspace web
+for_window [class="wezterm"] move to workspace code
+for_window [class="Discord"] move to workspace chat
+for_window [class="steam"] move to workspace steam
+for_window [class="^steam_apps*"] move to workspace games
 # Screen lock. See 'man i3lock' for information about usage.
-#bindsym $mod+Control+l exec "i3lock -t -i ~/.lock1.png --color=000000"
+bindsym $mod+Control+l exec "i3lock -t -i ~/.config/i3/cow.jpg --color=000000"
 
 # Jump to the latest "urgent" window.
 bindsym $mod+u [urgent=latest] focus
@@ -191,4 +190,4 @@ exec_always --no-startup-id setxkbmap gb -variant intl
 exec --no-startup-id "nitrogen --restore"
 
 exec firefox
-exec ghostty
+exec wezterm
