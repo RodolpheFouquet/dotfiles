@@ -10,4 +10,8 @@ echo '['
 echo '[],'
 
 # Now send blocks with information forever:
-exec conky -c ~/.config/conky/conky.conf
+if [ "$(uname)" = "FreeBSD" ]; then
+  exec conky -c ~/.config/conky/freebsd.conf
+else
+  exec conky -c ~/.config/conky/linux.conf
+fi
